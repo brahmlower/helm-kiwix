@@ -1,6 +1,12 @@
 apiVersion: v2
 name: kiwix
-description: A Helm chart for Kubernetes
+description: |
+  A helm chart for [kiwix](https://kiwix.org/en/).
+
+  ```
+  helm repo add brahmlower-kiwix https://brahmlower.github.io/helm-kiwix
+  helm install kiwix brahmlower-kiwix/kiwix
+  ```
 
 # A chart can be either an 'application' or a 'library' chart.
 #

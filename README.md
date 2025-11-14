@@ -10,47 +10,33 @@ helm repo add brahmlower-kiwix https://brahmlower.github.io/helm-kiwix
 helm install kiwix brahmlower-kiwix/kiwix
 ```
 
-## Configuration
+## Contributing
 
-Example configuration:
+## Values Schema Generation
 
-```yaml
-args: ["/data/zims/*"]
-
-volumeMounts:
-- name: kiwix-data
-  mountPath: "/data/zims"
-  readOnly: true
-
-volumes:
-- name: kiwix-data
-  persistentVolumeClaim:
-    claimName: kiwix-data
-
-volumeClaimTemplates:
-- metadata:
-    name: kiwix-data
-  spec:
-    storageClassName: my-storage-class
-    accessModes:
-      - ReadWriteOnce
-    resources:
-      requests:
-        storage: 3Gi
-
-ingress:
-  enabled: true
-  hosts:
-    - host: kiwix.example.com
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls:
-    - secretName: kiwix
-      hosts:
-        - kiwix.example.com
+Schema generation via [helm-schema](https://github.com/dadav/helm-schema).
+```
+helm plugin install https://github.com/dadav/helm-schema
 ```
 
-See the values.yaml file for more options.
+Update the schema with:
+```
+helm schema -rap
+```
 
-Better docs to come.
+Validate the values against the schema:
+```
+helm lint --strict ./charts/kiwix
+```
+
+## Docs Generation
+
+Docs generation via [helm-docs](https://github.com/norwoodj/helm-docs)
+```
+brew install norwoodj/tap/helm-docs
+```
+
+Update the schema with:
+```
+helm-docs
+```
