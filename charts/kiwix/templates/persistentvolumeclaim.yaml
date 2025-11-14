@@ -2,13 +2,11 @@
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
-metadata:
 {{- with .metadata }}
+metadata:
   {{- toYaml . | nindent 2 }}
 {{- end }}
 spec:
-  {{- with .spec }}
-    {{- toYaml . | nindent 2 }}
-  {{- end }}
+  {{- toYaml .spec | nindent 2 }}
 {{- else }}
 {{- end }}
