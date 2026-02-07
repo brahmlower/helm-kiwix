@@ -12,31 +12,15 @@ helm install kiwix brahmlower-kiwix/kiwix
 
 ## Contributing
 
-## Values Schema Generation
+### Values Schema Generation
 
-Schema generation via [helm-schema](https://github.com/dadav/helm-schema).
+Schema generation via [helm-values](https://github.com/brahmlower/helm-values).
 ```
-helm plugin install https://github.com/dadav/helm-schema
-```
-
-Update the schema with:
-```
-helm schema -rap
+helm plugin install https://github.com/brahmlower/helm-values
 ```
 
-Validate the values against the schema:
+Update the schema and docs:
 ```
-helm lint --strict ./charts/kiwix
-```
-
-## Docs Generation
-
-Docs generation via [helm-docs](https://github.com/norwoodj/helm-docs)
-```
-brew install norwoodj/tap/helm-docs
-```
-
-Update the schema with:
-```
-helm-docs
+helm values schema .
+helm values docs .
 ```
